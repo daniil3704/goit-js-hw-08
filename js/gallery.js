@@ -1,5 +1,3 @@
-
-
 const images = [
   {
     preview:
@@ -69,31 +67,28 @@ const images = [
 const gallery = document.querySelector(".gallery");
 images.forEach((image) => {
   const li = document.createElement("li");
-  li.classList.add('gallery-item');
+  li.classList.add("gallery-item");
   const a = document.createElement("a");
-  a.classList.add('gallery-link');
-  a.href = image.original
+  a.classList.add("gallery-link");
+  a.href = image.original;
   const img = document.createElement("img");
   img.src = image.preview;
   img.alt = image.description;
-  img.setAttribute('data-source', image.original);
-  img.classList.add('gallery-image');
-  li.appendChild(a)
-  a.appendChild(img)
-  gallery.appendChild(li)
-
+  img.setAttribute("data-source", image.original);
+  img.classList.add("gallery-image");
+  li.appendChild(a);
+  a.appendChild(img);
+  gallery.appendChild(li);
 });
 
-const imagesArray = document.querySelectorAll('.gallery-link');
- imagesArray.forEach(image => {
-    image.addEventListener('click', (event) => {
-        event.preventDefault()
-        const instance = basicLightbox.create(`
-            <img src="${image.getAttribute('href')}">
-        `)
-        
-        instance.show()
-    })
- });
+const imagesArray = document.querySelectorAll(".gallery-link");
+imagesArray.forEach((image) => {
+  image.addEventListener("click", (event) => {
+    event.preventDefault();
+    const instance = basicLightbox.create(`
+            <img src="${image.getAttribute("href")}">
+        `);
 
-
+    instance.show();
+  });
+});
